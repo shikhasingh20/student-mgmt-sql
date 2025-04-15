@@ -1,0 +1,17 @@
+-- All students with their marks
+SELECT s.name, sub.subject_name, m.marks
+FROM students s
+JOIN marks m ON s.student_id = m.student_id
+JOIN subjects sub ON m.subject_id = sub.subject_id;
+
+-- Average marks by subject
+SELECT sub.subject_name, AVG(m.marks) AS avg_marks
+FROM marks m
+JOIN subjects sub ON m.subject_id = sub.subject_id
+GROUP BY sub.subject_name;
+
+-- Toppers (marks > 90)
+SELECT s.name, m.marks
+FROM marks m
+JOIN students s ON m.student_id = s.student_id
+WHERE m.marks > 90;
